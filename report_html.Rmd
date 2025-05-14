@@ -1,0 +1,307 @@
+---
+title: "Cover Crop Enterprise Budget"
+output: html_document
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+params:
+    fc: NA
+    ic: NA
+    lc: NA
+    ncc: NA
+    fallowBenefits: NA
+    lateSeasonBenefits: NA
+    interseedingBenefits: NA
+    porq: NA
+    xvar: NA
+    inputData: NA
+    # heatmap_path: NULL
+    heatmap: NA
+    breakeven_text: NA
+    direct_comparison: NA
+---
+
+This report was generated on `r Sys.Date()`. 
+
+
+---
+
+\center
+![](banner.png){width="100%"}
+This report is made possible by the University of Maine, University of Maine Cooperative Extension, University of Maine School of Food and Agriculture, Maine Agricultural and Forest Experiment Station, the Agroecology Lab, and the USDA Natural Resources Conservation Service.
+\center
+
+\
+
+The enterprise budget table is presented below along with the cover crop alternatives, their respective benefits, and the user input sensitivity analysis. 
+
+\
+
+
+```{r, echo=F, message=F}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+
+nccTableData <- params$ncc
+
+nccTableData <- nccTableData %>%
+  mutate(Price = case_when(Price != "" ~ paste0("$ ", format(Price, nsmall = 2)),
+                           Price == "" ~ Price),
+         Total = case_when(Total != "" ~ paste0("$ ", format(Total, nsmall = 2)),
+                           Total == "" ~ Total))
+
+bold_rows <- c("Receipts", "Receipt Total", "Variable Costs", "Total Variable Costs", "Fallow Cover Crop Costs", "Total Fallow Cover Crop Costs", "Interseeding Cover Crop Costs", "Total Interseeding Cover Crop Costs", "Late Season Cover Crop Costs", "Total Late Season Cover Crop Costs", "Fixed Costs", "Total Fixed Costs", "Total Costs", "Returns", "Net Returns")
+underline_rows <- c("Receipt Total", "Total Variable Costs", "Total Fallow Cover Crop Costs", "Total Interseeding Cover Crop Costs", "Total Late Season Cover Crop Costs", "Total Fixed Costs", "Total Costs")
+header_rows <- setdiff(bold_rows, underline_rows)
+
+nccTable <- kbl(nccTableData, format = "html", linesep = " ", align = "lclll", caption = "Enterprise Budget") %>%
+  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(which(nccTableData$Item %in% bold_rows)), bold = T) %>%
+  row_spec(c(which(nccTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
+  row_spec(c(which(nccTableData$Item %in% header_rows)), font_size = 16) %>%
+  add_indent(c(which(!nccTableData$Item %in% bold_rows))) %>%
+  kable_classic(full_width = F)
+# nccTable
+
+direct_comparison_data <- params$direct_comparison
+
+direct_comparison_table <- kbl(direct_comparison_data, format = "html", booktabs = T, linesep = " ", align = "lccc", caption = "Direct Comparison of Cover Crop Strategies") %>%
+  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  kable_classic(full_width = F)
+direct_comparison_table
+```
+
+
+\pagebreak
+
+
+```{r, echo=F}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+
+fcTableData <- params$fc
+
+fcTableData <- fcTableData %>%
+  mutate(Quantity = case_when(Unit == "HEADER" ~ "",
+                                  TRUE ~ Quantity), 
+             Price = case_when(Unit == "HEADER" ~ "", 
+                               Price != "" ~ paste0("$ ", format(Price, nsmall = 2)),
+                               Price == "" ~ Price),
+             Total = case_when(Unit == "HEADER" ~ "", 
+                               Total != "" ~ paste0("$ ", format(Total, nsmall = 2)),
+                               Total == "" ~ Total),
+         Unit = case_when(Unit == "HEADER" ~ "",
+                          TRUE ~ Unit))
+
+fallowccTable <- kbl(fcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "No Cover Crop Enterprise Budget") %>%
+  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(which(fcTableData$Item %in% bold_rows)), bold = T) %>%
+  row_spec(c(which(fcTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
+  row_spec(c(which(fcTableData$Item %in% header_rows)), font_size = 16) %>%
+  add_indent(c(which(!fcTableData$Item %in% bold_rows))) %>%
+  kable_classic(full_width = F)
+fallowccTable
+```
+`r params$fallowBenefits`
+
+
+\pagebreak
+
+
+```{r, echo=F}
+library(knitr)
+library(kableExtra)
+
+icTableData <- params$ic
+
+icTableData <- icTableData %>%
+  mutate(Quantity = case_when(Unit == "HEADER" ~ "",
+                                  TRUE ~ Quantity), 
+             Price = case_when(Unit == "HEADER" ~ "", 
+                               Price != "" ~ paste0("$ ", format(Price, nsmall = 2)),
+                               Price == "" ~ Price),
+             Total = case_when(Unit == "HEADER" ~ "", 
+                               Total != "" ~ paste0("$ ", format(Total, nsmall = 2)),
+                               Total == "" ~ Total),
+         Unit = case_when(Unit == "HEADER" ~ "",
+                          TRUE ~ Unit))
+
+interseedingccTable <- kbl(icTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Interseeding Enterprise Budget") %>%
+  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(which(icTableData$Item %in% bold_rows)), bold = T) %>%
+  row_spec(c(which(icTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
+  row_spec(c(which(icTableData$Item %in% header_rows)), font_size = 16) %>%
+  add_indent(c(which(!icTableData$Item %in% bold_rows))) %>%
+  kable_classic(full_width = F)
+interseedingccTable
+```
+
+
+`r params$interseedingBenefits`
+
+
+\pagebreak
+
+
+```{r, echo=F}
+library(knitr)
+library(kableExtra)
+
+lcTableData <- params$lc
+
+lcTableData <- lcTableData %>%
+  mutate(Quantity = case_when(Unit == "HEADER" ~ "",
+                                  TRUE ~ Quantity), 
+             Price = case_when(Unit == "HEADER" ~ "", 
+                               Price != "" ~ paste0("$ ", format(Price, nsmall = 2)),
+                               Price == "" ~ Price),
+             Total = case_when(Unit == "HEADER" ~ "", 
+                               Total != "" ~ paste0("$ ", format(Total, nsmall = 2)),
+                               Total == "" ~ Total),
+         Unit = case_when(Unit == "HEADER" ~ "",
+                          TRUE ~ Unit))
+
+lateSeasonccTable <- kbl(lcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Fall Cover Crop Enterprise Budget") %>%
+  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(which(icTableData$Item %in% bold_rows)), bold = T) %>%
+  row_spec(c(which(icTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
+  row_spec(c(which(icTableData$Item %in% header_rows)), font_size = 16) %>%
+  add_indent(c(which(!icTableData$Item %in% bold_rows))) %>%
+  kable_classic(full_width = F)
+lateSeasonccTable
+```
+
+
+`r params$lateSeasonBenefits`
+
+
+\pagebreak
+
+
+`r params$breakeven_text`
+
+```{r, echo=FALSE, results='hide', fig.keep='all', message = F, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+
+print(params$porq)
+print(params$xvar)
+print(params$hvar)
+print(params$hporq)
+print(params$vvar)
+print(params$vporq)
+
+workingData <- params$ncc
+
+if (params$inputData == "With fallow cover crop costs") {
+  workingData <- params$fc
+} else
+  if (params$inputData == "With interseeding cover crop costs") {
+  workingData <- params$ic
+} else
+  if (params$inputData == "With late season cover crop costs") {
+  workingData <- params$lc
+} 
+
+xvar <- params$xvar
+porq <- params$porq
+
+# Extract the values and convert them to numeric
+xvar_value <- as.numeric(workingData[workingData$Item == xvar, porq])
+alt_col <- ifelse(porq == "Price", "Quantity", "Price")
+xvar_alt <- as.numeric(workingData[workingData$Item == xvar, alt_col])
+xvar_total <- as.numeric(workingData[workingData$Item == xvar, "Total"])
+    
+# Print statements for debugging
+print(paste("xvar:", xvar))
+print(paste("xvar_value:", xvar_value))
+print(paste("xvar_alt:", xvar_alt))
+print(paste("xvar_total:", xvar_total))
+    
+yvar <- as.numeric(workingData[nrow(workingData), "Total"])
+print(paste("yvar:", yvar))
+    
+# Create the dataframe with numeric calculations
+# Create the initial y values based on your formula
+y_values <- c(
+  (yvar + xvar_total - ((xvar_value * 0.8) * xvar_alt)),
+  (yvar + xvar_total - ((xvar_value * 0.9) * xvar_alt)),
+  (yvar + xvar_total - ((xvar_value * 1.0) * xvar_alt)),
+  (yvar + xvar_total - ((xvar_value * 1.1) * xvar_alt)),
+  (yvar + xvar_total - ((xvar_value * 1.2) * xvar_alt))
+)
+    
+# Check if xvar is "Cabbage" and flip the signs if true
+if (xvar == "Cabbage" | xvar == "Corn" | xvar == "Tomato") {
+  y_values <- c(
+    (yvar - xvar_total + ((xvar_value * 0.8) * xvar_alt)),
+    (yvar - xvar_total + ((xvar_value * 0.9) * xvar_alt)),
+    (yvar - xvar_total + ((xvar_value * 1.0) * xvar_alt)),
+    (yvar - xvar_total + ((xvar_value * 1.1) * xvar_alt)),
+    (yvar - xvar_total + ((xvar_value * 1.2) * xvar_alt))
+  )
+}
+    
+# Create the data frame with the updated y values
+plotData <- data.frame(
+  x = c(xvar_value * 0.8, xvar_value * 0.9, xvar_value, xvar_value * 1.1, xvar_value * 1.2),
+  y = y_values
+)
+    
+print("Plot Data:")
+print(plotData)
+
+data <- plotData
+
+print("Line Plot Data:")
+print(data)
+
+linePlot <- ggplot(data = data, aes(x = x, y = y)) +
+  geom_line() +
+  ggtitle("Sensitivity Analysis") +
+  scale_x_continuous(name = xvar,
+                     breaks = seq(data[1,1], data[5,1], by=(data[5,1] - data[1,1])/4)) +
+  scale_y_continuous(name = "Net Returns",
+                     breaks = seq(data[1,2], data[5,2], by=(data[5,2] - data[1,2])/4),
+                     labels = scales::dollar_format()) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(color = "black", linewidth = 1),
+        axis.text = element_text(size = 14),
+        title = element_text(size = 20),
+        text = element_text(family = "Helvetica", face = "bold"),
+        plot.title = element_text(hjust=0.5))
+    
+if(porq=="Price") {
+  linePlot <- linePlot + 
+    scale_x_continuous(name = xvar,
+                       breaks = seq(data[1,1], data[5,1], by=(data[5,1] - data[1,1])/4),
+                       labels = scales::dollar_format())
+}
+
+linePlot
+```
+
+
+\pagebreak
+
+
+```{r, echo=FALSE, fig.align='center'}
+# library(knitr)
+# knitr::include_graphics(params$heatmap_path)
+
+params$heatmap
+```

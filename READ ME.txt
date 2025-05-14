@@ -1,0 +1,30 @@
+Our cover crop dashboard has two primary underlying elements:
+
+User Interface: comes first in code, references server objects to display information and format user experience.
+	Sidebar: allows for user navigation and item selection.
+	Body: Contains features of interest, primary interface information; is the 'webpage' with information displayed. 
+		Start here: Welcomes user, discusses dashboard, user selects crop.
+		Inputs: User enters their respective input prices and quantities to be compiled in enterprise budget.
+		Enterprise Budget: Display enterprise budget tables and cover crop benefits. 
+		Sensitivity Analysis: Displays sensitivity analysis and allows user to choose which variables to consider.
+
+Server: comes second in code, allowing referred objects from user interface to display actual information. Responsible for button behavior, information display in enterprise tables, sensitivity analysis behavior. 
+	Start Here: Defines text used in start here tab of user interface, button behavior of 'begin' button. 
+	Inputs: Defines button behavior of 'submit' button. 
+	Benefits: Defines benefit information (text). 
+	Functions: Defines functions (totals, net returns, etc.) that are reactive to be used in tables and sensitivity analysis.
+	Table Data: Defines enterprise budget tables as objects and then makes them reactive to inputs. 
+	Sensitivity Analysis: Makes reactive sensitivity plots, allows for choices in variables displayed.
+	Report: Defines objects used in reports. For reports themselves, see accompanying R Markdown files in folder.
+
+ShinyApp(): compiles user interface and server together to allow the app to function.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The data input method uses prefilled excel sheets and loop functions to construct dataframes that are then presented via the input boxes and indexing. These inputs then replace the existing dataframes, which are used to construct the final tables used for presentation. 		
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Notes:
+For a heat map table–have any input (price or quantity) on either axis. Axes show 10-20% increase or decrease, and how it effects net returns in the middle. 
+Any questions and comments should be addressed to Bruce Wyatt (Graduate Research Assistant, University of Maine School of Economics, bruce.wyatt@maine.edu).

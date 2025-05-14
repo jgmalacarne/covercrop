@@ -1,0 +1,24 @@
+<p class="body-font">Seeding a cover crop post harvest is the most common method of managing cover crops. There are benefits and drawbacks to this approach.</p>
+<p class="header-font"><b>Benefits include:</b><br>
+<ul class="body-font">
+<li>Cover crops can be seeded into a fully cultivated and weed free field.</li>
+<li>The chance of a high level of cover crop seed germination and a weed free cover crop is increased due to better seedbed conditions.</li>
+<ul class="body-font">
+<li><i>Note: This point does not factor in the late seeding date.</i></li>
+</ul>
+<li>Post season and overwinter erosion is greatly minimized compared to no cover crop.</li>
+<ul class="body-font">
+<li><i>Note: If the cover crop is seeded too late, erosion control may not be seen until spring green up.</i></li>
+</ul>
+<li>Spring thaw up nutrient loss is reduced.</li>
+</ul>
+</p>
+<p class="header-font"><b>Drawbacks include:</b><br>
+<ul class="body-font">
+<li>Cover crop seed costs.</li>
+<li>Potentially low germination rates due to late seeding and cool soil temperatures.</li>
+<li>Late seeding limits cover crop species selection to winter rye.</li>
+<li>No benefit of soil stabilization during the cropping season.</li>
+<li>Requires more postseason tractor labor and fuel compared to interseeding.</li>
+</ul>
+</p>

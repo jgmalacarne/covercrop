@@ -1,0 +1,17 @@
+<p class="body-font">Maintaining a fallow field with no cover crop before or after a cash crop does have some benefit.</p>
+<p class="header-font"><b>Benefits include:</b><br>
+<ul class="body-font">
+<li>Reduced labor in seeding a cover crop.</li>
+<li>Potential increased management of perennial weeds through increased opportunity for mechanical disturbance.</li>
+<li>Earlier soil warming in the spring.</li>
+<li>No cover crop residue to incorporate in the spring.</li>
+</ul>
+</p>
+<p class="header-font"><b>Drawbacks include:</b><br>
+<ul class="body-font">
+<li>Increased soil loss due to wind and water erosion both during the season and after harvest.</li>
+<li>Loss of soil aggregation and structure due to lack of food source for soil microorganisms, rainfall impact, and potentially more traffic and compaction with mechanical cultivation passes to maintain fallow.</li>
+<li>Increased production of winter annual weeds and weed seed populations if not cultivated.</li>
+<li>Nutrient leaching and loss leading to the increased long term need for fertilizer.</li>
+</ul>
+</p>

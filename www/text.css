@@ -1,0 +1,119 @@
+/* This is the code that changes the font size and weight for the inputs in the dashboard. */ 
+
+/* Change all rendered text to 20px */
+.shiny-text-output {
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.title-font {
+  font-size: 30px;
+}
+
+.header-font {
+  font-size: 24px;
+}
+
+.body-font {
+  font-size: 20px;
+}
+
+.indented-text {
+  white-space: pre-line;
+  text-indent: -25px;
+  padding-left: 25px;
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.bold-indented-text {
+  white-space: pre-line;
+  text-indent: -25px;
+  padding-left: 25px;
+  font-size: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  width: 300px !important;
+}
+
+.equation {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;  /* Slightly lighter than bold */
+  font-style: italic;
+}
+
+/* Makes all headers bold */
+h1 {
+  font-weight: bold;
+}
+
+/* For all table text */
+/* body */
+.shiny-table td {
+  font-size: 16px;
+}
+/* heading */
+.shiny-table th {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Changes font size for select input dropdown boxes */
+.selectize-input, .selectize-dropdown {
+  font-size: 18px;
+}
+
+/* Changes font size for numeric and text input boxes */
+.form-control {
+  font-size: 18px;
+}
+
+/* Changes font size for all input box labels */
+.shiny-input-container > label {
+  font-size: 20px;
+}
+
+/* Changes font size and weight for all boxes in UI */
+.box-title {
+  font-size: 32px !important;
+  font-weight: bold;
+}
+
+/* Changes font size and weight for nav_panel headers */
+.nav-pills {
+  font-size: 28px;
+}
+
+/* Table details*/
+/* Define table hover behavior*/
+.shiny-table tr:hover {
+  background-color: #f5f5f5; /* Change to whatever color you prefer */
+}
+/* Create horizontal scroll behavior*/ 
+.table-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  max-width: 100%; /* Ensure the container takes full width */
+}
+/* Prevent wrapping so scroll works as intended */
+.shiny-table td,
+.shiny-table th {
+  white-space: nowrap; /* Prevent content from wrapping */
+}
+
+.plot-scrollable {
+  overflow-x: auto;       /* Enables horizontal scrolling */
+  overflow-y: hidden;     /* Hides vertical scrolling */
+  white-space: nowrap;    /* Prevents content from wrapping */
+  max-width: 100%;        /* Ensures the plot does not exceed the container's width */
+}
+
+.plot-scrollable > .shiny-plot-output {
+  display: inline-block;  /* Keeps the plot inline for horizontal scrolling */
+}
