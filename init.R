@@ -3,7 +3,7 @@
 # Example R code to install packages if not already installed
 #
 my_packages = c("bslib", "dplyr", "ggplot2", "gplots", "heatmaply","htmlwidgets",
-                "plotly","readxl","rmarkdown","shiny","shinyalerts","shinyBS",
+                "plotly","readxl","rmarkdown","shiny","shinyalert","shinyBS",
                 "shinydashboard","shinydashboardPlus","shinyjs","shinyWidgets","shinyvalidate","stringr","tidyverse","kableExtra")
 
 install_if_missing = function(p) {
