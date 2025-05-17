@@ -40,6 +40,9 @@ This report was generated on `r Sys.Date()`.
 
 \center
 ![](banner.png){width="100%"}
+
+\
+
 This report is made possible by the University of Maine, University of Maine Cooperative Extension, University of Maine School of Food and Agriculture, Maine Agricultural and Forest Experiment Station, the Agroecology Lab, and the USDA Natural Resources Conservation Service.
 \center
 
@@ -52,7 +55,7 @@ The enterprise budget table is presented below along with the cover crop alterna
 
 ```{r, echo=F, message=F}
 library(knitr)
-library(kableExtra)
+#library(kableExtra)
 library(dplyr)
 
 nccTableData <- params$ncc
@@ -68,7 +71,7 @@ underline_rows <- c("Receipt Total", "Total Variable Costs", "Total Fallow Cover
 header_rows <- setdiff(bold_rows, underline_rows)
 
 nccTable <- kbl(nccTableData, format = "html", linesep = " ", align = "lclll", caption = "Enterprise Budget") %>%
-  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
   row_spec(c(which(nccTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(nccTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(nccTableData$Item %in% header_rows)), font_size = 16) %>%
@@ -78,19 +81,21 @@ nccTable <- kbl(nccTableData, format = "html", linesep = " ", align = "lclll", c
 
 direct_comparison_data <- params$direct_comparison
 
-direct_comparison_table <- kbl(direct_comparison_data, format = "html", booktabs = T, linesep = " ", align = "lccc", caption = "Direct Comparison of Cover Crop Strategies") %>%
-  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+direct_comparison_table <- kbl(direct_comparison_data, format = "html", booktabs = T, linesep = " ", align = "lccc", caption = " Direct Comparison of Cover Crop Strategies") %>%
+  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
   kable_classic(full_width = F)
 direct_comparison_table
 ```
 
 
-\pagebreak
+\
+
+\
 
 
 ```{r, echo=F}
 library(knitr)
-library(kableExtra)
+#library(kableExtra)
 library(dplyr)
 
 fcTableData <- params$fc
@@ -108,7 +113,7 @@ fcTableData <- fcTableData %>%
                           TRUE ~ Unit))
 
 fallowccTable <- kbl(fcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "No Cover Crop Enterprise Budget") %>%
-  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
   row_spec(c(which(fcTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(fcTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(fcTableData$Item %in% header_rows)), font_size = 16) %>%
@@ -116,15 +121,20 @@ fallowccTable <- kbl(fcTableData, format = "html", booktabs = T, linesep = " ", 
   kable_classic(full_width = F)
 fallowccTable
 ```
+
+\
+
 `r params$fallowBenefits`
 
 
-\pagebreak
+\
+
+\
 
 
 ```{r, echo=F}
 library(knitr)
-library(kableExtra)
+#library(kableExtra)
 
 icTableData <- params$ic
 
@@ -141,7 +151,7 @@ icTableData <- icTableData %>%
                           TRUE ~ Unit))
 
 interseedingccTable <- kbl(icTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Interseeding Enterprise Budget") %>%
-  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
   row_spec(c(which(icTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(icTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(icTableData$Item %in% header_rows)), font_size = 16) %>%
@@ -150,16 +160,19 @@ interseedingccTable <- kbl(icTableData, format = "html", booktabs = T, linesep =
 interseedingccTable
 ```
 
+\
 
 `r params$interseedingBenefits`
 
 
-\pagebreak
+\
+
+\
 
 
 ```{r, echo=F}
 library(knitr)
-library(kableExtra)
+#library(kableExtra)
 
 lcTableData <- params$lc
 
@@ -176,7 +189,7 @@ lcTableData <- lcTableData %>%
                           TRUE ~ Unit))
 
 lateSeasonccTable <- kbl(lcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Fall Cover Crop Enterprise Budget") %>%
-  row_spec(c(0), bold = T, font_size = 20, extra_css = "border-bottom: 2px solid;") %>%
+  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
   row_spec(c(which(icTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(icTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(icTableData$Item %in% header_rows)), font_size = 16) %>%
@@ -185,14 +198,19 @@ lateSeasonccTable <- kbl(lcTableData, format = "html", booktabs = T, linesep = "
 lateSeasonccTable
 ```
 
+\
 
 `r params$lateSeasonBenefits`
 
 
-\pagebreak
+\
+
+\
 
 
 `r params$breakeven_text`
+
+\
 
 ```{r, echo=FALSE, results='hide', fig.keep='all', message = F, warning=FALSE}
 library(ggplot2)
@@ -296,12 +314,22 @@ linePlot
 ```
 
 
-\pagebreak
+\
+
+\
+
+\
 
 
-```{r, echo=FALSE, fig.align='center'}
+```{r, echo=FALSE, fig.align='center',}
 # library(knitr)
 # knitr::include_graphics(params$heatmap_path)
 
 params$heatmap
 ```
+
+\
+
+\
+
+\
