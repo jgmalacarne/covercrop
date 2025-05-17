@@ -75,15 +75,17 @@ nccTable <- kbl(nccTableData, format = "html", linesep = " ", align = "lclll", c
   row_spec(c(which(nccTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(nccTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(nccTableData$Item %in% header_rows)), font_size = 16) %>%
-  add_indent(c(which(!nccTableData$Item %in% bold_rows))) %>%
-  kable_classic(full_width = F)
+  add_indent(c(which(!nccTableData$Item %in% bold_rows))) 
+#%>%
+#kable_classic(full_width = F)
 # nccTable
 
 direct_comparison_data <- params$direct_comparison
 
 direct_comparison_table <- kbl(direct_comparison_data, format = "html", booktabs = T, linesep = " ", align = "lccc", caption = " Direct Comparison of Cover Crop Strategies") %>%
-  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
-  kable_classic(full_width = F)
+  row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") 
+#%>%
+#kable_classic(full_width = F)
 direct_comparison_table
 ```
 
@@ -117,8 +119,9 @@ fallowccTable <- kbl(fcTableData, format = "html", booktabs = T, linesep = " ", 
   row_spec(c(which(fcTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(fcTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(fcTableData$Item %in% header_rows)), font_size = 16) %>%
-  add_indent(c(which(!fcTableData$Item %in% bold_rows))) %>%
-  kable_classic(full_width = F)
+  add_indent(c(which(!fcTableData$Item %in% bold_rows))) 
+#%>%
+#kable_classic(full_width = F)
 fallowccTable
 ```
 
@@ -155,8 +158,9 @@ interseedingccTable <- kbl(icTableData, format = "html", booktabs = T, linesep =
   row_spec(c(which(icTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(icTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(icTableData$Item %in% header_rows)), font_size = 16) %>%
-  add_indent(c(which(!icTableData$Item %in% bold_rows))) %>%
-  kable_classic(full_width = F)
+  add_indent(c(which(!icTableData$Item %in% bold_rows))) 
+#%>%
+#kable_classic(full_width = F)
 interseedingccTable
 ```
 
@@ -193,8 +197,9 @@ lateSeasonccTable <- kbl(lcTableData, format = "html", booktabs = T, linesep = "
   row_spec(c(which(icTableData$Item %in% bold_rows)), bold = T) %>%
   row_spec(c(which(icTableData$Item %in% underline_rows)), extra_css = "border-bottom: 1px solid;") %>%
   row_spec(c(which(icTableData$Item %in% header_rows)), font_size = 16) %>%
-  add_indent(c(which(!icTableData$Item %in% bold_rows))) %>%
-  kable_classic(full_width = F)
+  add_indent(c(which(!icTableData$Item %in% bold_rows))) 
+#%>%
+#kable_classic(full_width = F)
 lateSeasonccTable
 ```
 
