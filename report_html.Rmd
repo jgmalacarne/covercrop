@@ -70,7 +70,7 @@ bold_rows <- c("Receipts", "Receipt Total", "Variable Costs", "Total Variable Co
 underline_rows <- c("Receipt Total", "Total Variable Costs", "Total Fallow Cover Crop Costs", "Total Interseeding Cover Crop Costs", "Total Late Season Cover Crop Costs", "Total Fixed Costs", "Total Costs")
 header_rows <- setdiff(bold_rows, underline_rows)
 
-nccTable <- kbl(nccTableData, format = "html", linesep = " ", align = "lclll", caption = "Enterprise Budget") 
+nccTable <- kable(nccTableData, format = "html", linesep = " ", align = "lclll", caption = "Enterprise Budget") 
 
 # %>%
 #   row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
@@ -84,7 +84,7 @@ nccTable <- kbl(nccTableData, format = "html", linesep = " ", align = "lclll", c
 
 direct_comparison_data <- params$direct_comparison
 
-direct_comparison_table <- kbl(direct_comparison_data, format = "html", booktabs = T, linesep = " ", align = "lccc", caption = " Direct Comparison of Cover Crop Strategies") 
+direct_comparison_table <- kable(direct_comparison_data, format = "html", booktabs = T, linesep = " ", align = "lccc", caption = " Direct Comparison of Cover Crop Strategies") 
 
 # %>%
 #   row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") 
@@ -118,7 +118,7 @@ fcTableData <- fcTableData %>%
          Unit = case_when(Unit == "HEADER" ~ "",
                           TRUE ~ Unit))
 
-fallowccTable <- kbl(fcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "No Cover Crop Enterprise Budget") 
+fallowccTable <- kable(fcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "No Cover Crop Enterprise Budget") 
 
 # %>%
 #   row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
@@ -159,7 +159,7 @@ icTableData <- icTableData %>%
          Unit = case_when(Unit == "HEADER" ~ "",
                           TRUE ~ Unit))
 
-interseedingccTable <- kbl(icTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Interseeding Enterprise Budget") 
+interseedingccTable <- kable(icTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Interseeding Enterprise Budget") 
 
 # %>%
 #   row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
@@ -200,7 +200,7 @@ lcTableData <- lcTableData %>%
          Unit = case_when(Unit == "HEADER" ~ "",
                           TRUE ~ Unit))
 
-lateSeasonccTable <- kbl(lcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Fall Cover Crop Enterprise Budget") 
+lateSeasonccTable <- kable(lcTableData, format = "html", booktabs = T, linesep = " ", align = "lclll", caption = "Fall Cover Crop Enterprise Budget") 
 
 # %>%
 #   row_spec(c(0), bold = T, font_size = 16, extra_css = "border-bottom: 2px solid;") %>%
