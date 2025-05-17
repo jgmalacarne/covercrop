@@ -24,7 +24,8 @@ my_packages = c("bslib",
                 "shinyvalidate",
                 "stringr",
                 "tibble",
-                "tidyr")
+                "tidyr",
+                "kableExtra")
 
 install_if_missing = function(p) {
   if (p %in% rownames(installed.packages()) == FALSE) {
